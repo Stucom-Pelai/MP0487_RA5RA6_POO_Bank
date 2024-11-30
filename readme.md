@@ -15,15 +15,15 @@
 
 #### Installation
 ```
-$ composer install
+git clone
 ```
 
 #### Run Unit Test
 ```
-$ ./vendor/bin/phpunit ./tests
+./vendor/bin/phpunit ./tests
 ```
 
 #### Manual Test
 ```
-$ php src/index.php
+php src/index.php
 ```

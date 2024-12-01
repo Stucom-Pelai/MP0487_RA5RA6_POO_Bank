@@ -112,4 +112,36 @@ classDiagram
     } 
 ```
 
+#### Sequence Diagram
+```mermaid
+sequenceDiagram
+    participant index
+    participant BankAccount
+    participant DepositTransaction
+
+    activate index
+    index->>BankAccount: new BankAccount(400€)
+    activate BankAccount
+    index->>BankAccount: getBalance()
+    index->>BankAccount: closeAccount()
+    index->>BankAccount: reopenAccount()
+    index->>BankAccount: transaction(150€)
+    deactivate index
+    BankAccount-->>DepositTransaction: applyTransaction(account)
+    deactivate BankAccount
+    activate DepositTransaction
+    DepositTransaction-->>DepositTransaction: calculateBalance
+    
+    DepositTransaction-->>BankAccount: return newBalance
+    deactivate DepositTransaction
+
+    activate BankAccount
+    BankAccount-->>BankAccount: setBalance(550€)
+    BankAccount-->>index: void
+    deactivate BankAccount
+
+    activate index
+    deactivate index
+```
+
 
